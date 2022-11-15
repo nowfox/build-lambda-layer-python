@@ -51,7 +51,7 @@ git submodule update --init --recursive --remote
   - parent directory of script (useful when used as submodule)
   - function sub-directory of the parent directory (useful when used as submodule)
 - Optionally specify Python Version
-  - `-p PYTHON_VER` - specifies the Python version: 2.7, 3.6, 3.7, 3.8 (default 3.7)
+  - `-p PYTHON_VER` - specifies the Python version: 2.7, 3.6, 3.7, 3.8, 3.9 (default 3.9)
 
 ## Reference - remove submodule
 
