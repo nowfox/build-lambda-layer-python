@@ -24,7 +24,7 @@ displayVer() {
 usage() {
   [[ "$1" ]] && echo -e "AWS Lambda Layer Zip Builder for Python Libraries\n"
   echo -e "usage: ${scriptname} [-p PYTHON_VER] [-s] [-r REQUIREMENTS-DIR] [-h] [-v]"
-  echo -e "     -p PYTHON_VER\t: Python version to use: 2.7, 3.6, 3.7, 3.8 (default 3.7)"
+  echo -e "     -p PYTHON_VER\t: Python version to use: 2.7, 3.6, 3.7, 3.8, 3.9 (default 3.9)"
   echo -e "     -h\t\t\t: help"
   echo -e "     -v\t\t\t: display ${scriptname} version"
 }
@@ -40,8 +40,8 @@ while getopts ":p:hv" arg; do
 done
 shift $((OPTIND-1))
 
-# default Python to 3.7 if not set by CLI params
-PYTHON_VER="${PYTHON_VER:-3.7}"
+# default Python to 3.9 if not set by CLI params
+PYTHON_VER="${PYTHON_VER:-3.9}"
 
 CURRENT_DIR=$(reldir=$(dirname -- "$0"; echo x); reldir=${reldir%?x}; cd -- "$reldir" && pwd && echo x); CURRENT_DIR=${CURRENT_DIR%?x}
 BASE_DIR=$(basename $CURRENT_DIR)
@@ -64,7 +64,7 @@ else
   exit 1
 fi
 
-docker run --rm -e PYTHON_VER="$PYTHON_VER" -v "$CURRENT_DIR":/var/task -v "$REQ_PATH":/temp/build/requirements.txt "lambci/lambda:build-python${PYTHON_VER}" bash /var/task/_make_zip.sh
+docker run --rm -e PYTHON_VER="$PYTHON_VER" -v "$CURRENT_DIR":/var/task -v "$REQ_PATH":/temp/build/requirements.txt "public.ecr.aws/sam/build-python${PYTHON_VER}" bash /var/task/_make_zip.sh
 
 # Move ZIP to parent dir if SUBDIR_MODE set
 if [[ "$SUBDIR_MODE" ]]; then

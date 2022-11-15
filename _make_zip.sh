@@ -23,6 +23,7 @@ echo "BUILDING ZIP: ${ZIP_FILE} for ${PYTHON}"
 mkdir /tmp/build
 
 # Create virtual environment and activate it
+pip install virtualenv
 virtualenv -p $PYTHON /tmp/build
 source /tmp/build/bin/activate
 
