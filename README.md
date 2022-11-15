@@ -16,7 +16,7 @@ This function was created to address these issues:
 - Builds zip file containing Python dependancies and places the libraries into the proper directory structure for lambda layers
 - Ensures compiled libraries are compatible with Lambda environment by using [docker container](https://hub.docker.com/r/lambci/lambda) that mimics the lambda runtime environment
 - Optimized the zip size by removing `.pyc` files and unnecessary libraries
-- allows specifying lambda supported python versions: 2.7, 3.6, 3.7 and 3.8
+- allows specifying lambda supported python versions: 2.7, 3.6, 3.7 , 3.8 and 3.9 (default)
 - Automatically searches for requirements.txt file in several locations:
   - same directory as script
   - parent directory or script (useful when used as submodule)
@@ -30,14 +30,14 @@ Clone for standalone use or within a repo:
 
 ``` bash
 # If installing into an exisiting repo, navigate to repo dir
-git clone --depth 1 https://github.com/robertpeteuil/build-lambda-layer-python _build_layer
+git clone --depth 1 https://github.com/nowfox/build-lambda-layer-python _build_layer
 ```
 
 Alternatively, add as a submodule:
 
 ``` bash
 cd {repo root}
-git submodule add https://github.com/robertpeteuil/build-lambda-layer-python _build_layer
+git submodule add https://github.com/nowfox/build-lambda-layer-python _build_layer
 # Update submodule
 git submodule update --init --recursive --remote
 ```
