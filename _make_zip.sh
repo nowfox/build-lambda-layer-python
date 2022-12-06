@@ -22,6 +22,8 @@ echo "BUILDING ZIP: ${ZIP_FILE} for ${PYTHON}"
 # Create build dir
 mkdir /tmp/build
 
+# Change source
+pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 # Create virtual environment and activate it
 pip install virtualenv
 virtualenv -p $PYTHON /tmp/build
