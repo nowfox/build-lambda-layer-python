@@ -64,7 +64,7 @@ else
   exit 1
 fi
 
-docker run --rm -e PYTHON_VER="$PYTHON_VER" -v "$CURRENT_DIR":/var/task -v "$REQ_PATH":/temp/build/requirements.txt "public.ecr.aws/sam/build-python${PYTHON_VER}" bash /var/task/_make_zip.sh
+docker run --rm -e PYTHON_VER="$PYTHON_VER" -v "$CURRENT_DIR":/var/task -v "$REQ_PATH":/temp/build/requirements.txt "public.ecr.aws/sam/build-python${PYTHON_VER}:latest-x86_64" bash /var/task/_make_zip.sh
 
 # Move ZIP to parent dir if SUBDIR_MODE set
 if [[ "$SUBDIR_MODE" ]]; then
